@@ -1,9 +1,0 @@
-{
-  "name": "cv-ai-backend",
-  "version": "1.0.0",
-  "description": "Backend pour l'analyse de CV avec Gemini",
-  "main": "api/analyse.js",
-  "dependencies": {
-    "@google/genai": "^0.1.1"
-  }
-}
