@@ -9,13 +9,14 @@
 <body>
     <div class="container">
         <h1>Assistant RH Intelligent</h1>
-        <p>Déposez les CV puis cliquez sur Analyser</p>
+        <p>Déposez le fichier du CV puis cliquez sur Analyser</p>
         
         <label>Profil recherché</label>
         <textarea id="critere" placeholder="Exemple : Développeur Python avec expérience Django"></textarea>
         
-        <label>CV (texte pour le moment)</label>
-        <textarea id="cv" placeholder="Collez ici le texte du CV"></textarea>
+        <label>Sélectionner le fichier du CV (PDF, DOCX, TXT)</label>
+        <!-- Remplacement du textarea par un input file -->
+        <input type="file" id="cvFile" accept=".pdf,.docx,.txt" style="display: block; width: 100%; margin: 10px 0; padding: 10px; border: 1px dashed #2563eb; border-radius: 10px;">
         
         <button onclick="analyser()">Analyser le CV</button>
         
