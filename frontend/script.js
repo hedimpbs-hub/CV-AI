@@ -2,7 +2,6 @@ async function analyser() {
     let critere = document.getElementById("critere").value;
     let cv = document.getElementById("cv").value;
     
-    // Affiche le message de chargement
     document.getElementById("chargement").style.display = "block";
     document.getElementById("resultat").innerHTML = "";
 
@@ -20,10 +19,8 @@ async function analyser() {
 
         const resultat = await response.json();
         
-        // Cache le message de chargement
         document.getElementById("chargement").style.display = "none";
         
-        // Affiche le résultat ou l'erreur retournée par l'API
         if (resultat.reponse) {
             document.getElementById("resultat").innerHTML = resultat.reponse;
         } else if (resultat.error) {
