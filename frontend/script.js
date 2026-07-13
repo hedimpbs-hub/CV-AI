@@ -1,11 +1,36 @@
+// Fonction utilitaire pour convertir un fichier en Base64
+function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            // On extrait uniquement les données brutes après la virgule
+            const base64String = reader.result.split(',')[1];
+            resolve(base64String);
+        };
+        reader.onerror = error => reject(error);
+    });
+}
+
 async function analyser() {
     let critere = document.getElementById("critere").value;
-    let cv = document.getElementById("cv").value;
+    let fileInput = document.getElementById("cvFile");
     
+    if (!fileInput.files || fileInput.files.length === 0) {
+        alert("Veuillez sélectionner un fichier de CV avant de lancer l'analyse.");
+        return;
+    }
+
+    let file = fileInput.files[0];
+    
+    // Affiche le chargement
     document.getElementById("chargement").style.display = "block";
     document.getElementById("resultat").innerHTML = "";
 
     try {
+        // Conversion du fichier choisi en texte Base64
+        const fileBase64 = await fileToBase64(file);
+
         const response = await fetch("https://cv-ai-kohl.vercel.app/api/analyse", {
             method: "POST",
             headers: {
@@ -13,7 +38,8 @@ async function analyser() {
             },
             body: JSON.stringify({
                 critere: critere,
-                cv: cv
+                fileData: fileBase64,
+                mimeType: file.type // Donne le type de fichier (application/pdf, etc.)
             })
         });
 
