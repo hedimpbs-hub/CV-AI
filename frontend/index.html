@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Assistant RH IA</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Assistant RH Intelligent</h1>
+
+<p>
+Déposez les CV puis cliquez sur Analyser
+</p>
+
+<label>
+
+Profil recherché
+
+</label>
+
+<textarea id="critere"
+placeholder="Exemple : Développeur Python avec expérience Django"></textarea>
+
+<label>
+
+CV (texte pour le moment)
+
+</label>
+
+<textarea
+id="cv"
+placeholder="Collez ici le texte du CV"></textarea>
+
+<button onclick="analyser()">
+
+Analyser le CV
+
+</button>
+
+<div id="chargement">
+
+Analyse en cours...
+
+</div>
+
+<pre id="resultat"></pre>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
